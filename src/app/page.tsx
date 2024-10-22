@@ -58,7 +58,7 @@ export default function Home() {
           <Row>
             {
               data?.results.map((character) => (
-                <Col xs={12} md={6} lg={3} key={character.id} className="mb-4 mx-auto">
+                <Col xs={12} md={6} lg={3} key={character.id} className="mb-4 mx-auto d-flex justify-content-center">
                  <CardCharacter 
                   character={character}
                  />
