@@ -1,5 +1,5 @@
 'use client';
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { CHARACTERS_ENDPOINT } from "./core/constants/endpoints";
 import Image from "next/image";
@@ -14,24 +14,34 @@ const initialState = {
   page: `${CHARACTERS_ENDPOINT}/?page=1`,
 };
 
-function paginationReducer(state: any, action: any) {
-  switch (action.type) {
-    case 'CHANGE_PAGE':
-      return { ...state, page: action.page };
-    default:
-      return state;
-  }
-}
+
 
 export default function Home() {
 
+  const [loading, setLoading] = useState(true);
   const [state, dispatch] = useReducer(paginationReducer, initialState);
   const [data] = useCustomHookFetchCharacter(state.page);
+
+  function paginationReducer(state: any, action: any) {
+    setLoading(true);
+    switch (action.type) {
+      case 'CHANGE_PAGE':
+        return { ...state, page: action.page };
+      default:
+        return state;
+    }
+  }
 
   function changePage(page: string){
     dispatch({ type: 'CHANGE_PAGE', page });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  useEffect(() => {
+    if (data) {
+      setLoading(false);
+    }
+  }, [data]);
   
   return (
     <>
@@ -41,7 +51,7 @@ export default function Home() {
         <h1 className="py-4">Characters</h1>
 
         {
-          !data &&
+          loading &&
           <div className="d-flex justify-content-center align-items-center">
             <div className="pt-2">
               <Image
@@ -55,6 +65,7 @@ export default function Home() {
           </div>
         }
         {
+          !loading &&
           <Row>
             {
               data?.results.map((character) => (

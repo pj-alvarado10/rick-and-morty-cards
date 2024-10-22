@@ -1,6 +1,8 @@
 import { ICharacter } from "@/app/core/interfaces/character.interface";
 import { Card, Spinner } from "react-bootstrap";
 import styles from './card-character.module.css';
+import { Suspense } from "react";
+import SkeletonCard from "./skeleton-card";
 
 interface CardCharacterProps {
     character: ICharacter;
@@ -17,6 +19,7 @@ export default function CardCharacter({ character }: CardCharacterProps){
     }
 
     return (
+      <Suspense fallback={<SkeletonCard/>}>
         <Card
           bg={'dark'}
           text={'white'}
@@ -46,5 +49,6 @@ export default function CardCharacter({ character }: CardCharacterProps){
             </Card.Text>
           </Card.Body>
         </Card>
+      </Suspense>
     );
 }
