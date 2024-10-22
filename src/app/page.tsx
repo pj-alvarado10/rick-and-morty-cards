@@ -1,6 +1,6 @@
 'use client';
 import { useReducer } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { CHARACTERS_ENDPOINT } from "./core/constants/endpoints";
 import Image from "next/image";
 import useCustomHookFetchCharacter from "./hooks/use-custom-hook-fetch-character";
@@ -55,17 +55,17 @@ export default function Home() {
           </div>
         }
         {
-          <div className="d-flex flex-wrap justify-content-between">
+          <Row>
             {
               data?.results.map((character) => (
-                <div key={character.id} className="mb-4 mx-auto me-md-4">
+                <Col xs={12} md={6} lg={3} key={character.id} className="mb-4 mx-auto">
                  <CardCharacter 
                   character={character}
                  />
-                </div>
+                </Col>
               ))
             }
-          </div>
+          </Row>
         }
 
         {
