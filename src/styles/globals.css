@@ -9,3 +9,14 @@ h1 {
     font-family: "creepster", sans-serif;
     color: white !important;
 }
+
+.page-link {
+  background-color: black !important;
+  color: antiquewhite !important;
+}
+
+.page-link.active, .active > .page-link {
+  background-color: antiquewhite !important;
+  border-color: antiquewhite !important;
+  color: black !important;
+}

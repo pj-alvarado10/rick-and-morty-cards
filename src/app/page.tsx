@@ -1,14 +1,37 @@
 'use client';
-import styles from "./page.module.css";
+import { useReducer } from "react";
 import { Container } from "react-bootstrap";
+import { CHARACTERS_ENDPOINT } from "./core/constants/endpoints";
+import Image from "next/image";
 import useCustomHookFetchCharacter from "./hooks/use-custom-hook-fetch-character";
 import Header from "./components/navbar/header";
 import Footer from "./components/footer/footer";
-import Image from "next/image";
 import CardCharacter from "./components/card/card-character";
+import PaginationCharacters from "./components/pagination/pagination-characters";
+import styles from "./page.module.css";
+
+const initialState = {
+  page: `${CHARACTERS_ENDPOINT}/?page=1`,
+};
+
+function paginationReducer(state: any, action: any) {
+  switch (action.type) {
+    case 'CHANGE_PAGE':
+      return { ...state, page: action.page };
+    default:
+      return state;
+  }
+}
 
 export default function Home() {
-  const [data] = useCustomHookFetchCharacter("https://rickandmortyapi.com/api/character");
+
+  const [state, dispatch] = useReducer(paginationReducer, initialState);
+  const [data] = useCustomHookFetchCharacter(state.page);
+
+  function changePage(page: string){
+    dispatch({ type: 'CHANGE_PAGE', page });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   
   return (
     <>
@@ -42,6 +65,13 @@ export default function Home() {
                 </div>
               ))
             }
+          </div>
+        }
+
+        {
+          data &&
+          <div className="pt-4 d-flex justify-content-center">
+            <PaginationCharacters statePage={state.page} info={data?.info!} changePage={(page: string) => changePage(page)} />
           </div>
         }
         
