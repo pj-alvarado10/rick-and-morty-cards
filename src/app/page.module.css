@@ -3,4 +3,11 @@
     background-repeat: repeat;
     background-size: auto;
     min-height: 100vh;
+    padding-bottom: 70px;
+}
+
+.empty {
+    color: white !important;
+    padding-top: 1.5rem;
+    font-family: "creepster", sans-serif;
 }

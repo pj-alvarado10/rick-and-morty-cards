@@ -5,7 +5,7 @@ import styles from "./footer.module.css";
 
 export default function Footer(){
     return (
-        <footer className='w-100 d-flex justify-content-center'>
+        <footer className={`w-100 d-flex justify-content-center ${styles.marginFooter}`}>
             <Image
                 src="/footer.svg"
                 width="0"

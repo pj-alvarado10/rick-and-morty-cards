@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.creepster-regular {
+    font-family: "Creepster", sans-serif;
+    font-weight: 400;
+  }
+
+h1 {
+    font-family: "creepster", sans-serif;
+    color: white !important;
+}

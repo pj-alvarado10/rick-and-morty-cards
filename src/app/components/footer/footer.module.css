@@ -1,3 +1,7 @@
 .footer {
     width: auto !important;
 }
+
+.marginFooter {
+    margin-top: -70px;
+}
