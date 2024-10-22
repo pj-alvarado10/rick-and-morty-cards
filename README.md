@@ -1,4 +1,4 @@
-This is a project with Rick and Morty cards built with [Next.js](https://nextjs.org/).
+This is a project with Rick and Morty cards built with [Next.js](https://nextjs.org/). Use a Custom hook to fetch the api and useReducer hook to update the data to set page.
 
 ## Demo 
 Demo with the app deployed in Vercel here.
@@ -22,6 +22,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This app was deployed in [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

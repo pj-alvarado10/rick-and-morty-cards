@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import Link from "next/link";
-import React from 'react'
+import React from 'react';
 import styles from '../styles/not-found.module.css';
 
 export default function NotFound(){
@@ -13,7 +13,7 @@ export default function NotFound(){
             </div>
             <p className="text-center italic font-normal text-white mt-0 leading-5">
                 <small>
-                    The page you are looking for <br /> doesn't exists in this
+                    The page you are searching <br/> is not in this
                     universe.
                 </small>
             </p>
